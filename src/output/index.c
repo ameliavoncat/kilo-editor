@@ -1,3 +1,6 @@
-#include "editor_draw_rows.c"
 #include "editor_scroll.c"
+#include "editor_draw_rows.c"
+#include "editor_draw_status_bar.c"
+#include "editor_draw_message_bar.c"
 #include "editor_refresh_screen.c"
+#include "editor_set_status_message.c"
