@@ -11,26 +11,8 @@
 #include "src/data.c"
 #include "src/constants.c"
 #include "src/helpers.c"
-#include "src/terminal.c"
+#include "src/terminal/index.c"
 #include "src/append_buffer.c"
-#include "src/output.c"
-#include "src/input.c"
-#include "src/init.c"
-
-
-
-/*** defines ***/
-
-/*** data ***/
-
-/*** helpers ***/
-
-/*** terminal ***/
-
-/*** append buffer ***/
-
-/*** input ***/
-
-/*** output ***/
-
-/*** init ***/
+#include "src/output/index.c"
+#include "src/input/index.c"
+#include "src/init/index.c"
