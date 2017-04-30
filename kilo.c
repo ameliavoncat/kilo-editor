@@ -21,6 +21,7 @@
 #include "src/helpers.c"
 #include "src/terminal/index.c"
 #include "src/row_operations/index.c"
+#include "src/editor_operations/index.c"
 #include "src/file_io.c"
 #include "src/append_buffer.c"
 #include "src/output/index.c"

@@ -2,6 +2,10 @@ void editorProcessKeypress() {
   int input = editorReadKey();
 
   switch(input) {
+    case '\r':
+      /* TODO */
+      break;
+
     case CTRL_KEY('q'):
       clearScreenAndPositionCursor();
       exit(0);
@@ -14,6 +18,12 @@ void editorProcessKeypress() {
     case END_KEY:
       if (E.cy < E.numrows)
         E.cx = E.row[E.cy].size;
+      break;
+
+    case BACKSPACE:
+    case CTRL_KEY('h'):
+    case DEL_KEY:
+      /* TODO */
       break;
 
     case PAGE_UP:
@@ -37,6 +47,14 @@ void editorProcessKeypress() {
     case ARROW_LEFT:
     case ARROW_RIGHT:
       editorMoveCursor(input);
+      break;
+
+    case CTRL_KEY('l'):
+    case '\x1b':
+      break;
+
+    default:
+      editorInsertChar(input);
       break;
   }
 }
