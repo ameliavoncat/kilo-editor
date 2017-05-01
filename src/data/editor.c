@@ -1,1 +1,1 @@
-struct editorConfig E;
+struct editorConfig Editor;

@@ -5,5 +5,5 @@ void editorRowInsertChar(erow *row, int index, int input) {
   row->size++;
   row->chars[index] = input;
   editorUpdateRow(row);
-  E.dirty++;
+  Editor.dirty++;
 }

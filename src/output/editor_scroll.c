@@ -1,19 +1,19 @@
 void editorScroll() {
-  E.rx = 0;
-  if (E.cy < E.numrows) {
-    E.rx = editorRowCxToRx(&E.row[E.cy], E.cx);
+  Editor.render_position_x = 0;
+  if (Editor.char_position_y < Editor.numrows) {
+    Editor.render_position_x = editorRowCxToRx(&Editor.row[Editor.char_position_y], Editor.char_position_x);
   }
 
-  if (E.cy < E.rowoff) {
-    E.rowoff = E.cy;
+  if (Editor.char_position_y < Editor.row_offset) {
+    Editor.row_offset = Editor.char_position_y;
   }
-  if (E.cy > E.rowoff + E.screenrows) {
-    E.rowoff = E.cy - E.screenrows + 1;
+  if (Editor.char_position_y > Editor.row_offset + Editor.screenrows) {
+    Editor.row_offset = Editor.char_position_y - Editor.screenrows + 1;
   }
-  if (E.rx < E.coloff) {
-    E.coloff = E.rx;
+  if (Editor.render_position_x < Editor.col_offset) {
+    Editor.col_offset = Editor.render_position_x;
   }
-  if (E.rx >= E.coloff + E.screencols) {
-    E.coloff = E.rx - E.screencols + 1;
+  if (Editor.render_position_x >= Editor.col_offset + Editor.screencols) {
+    Editor.col_offset = Editor.render_position_x - Editor.screencols + 1;
   }
 }

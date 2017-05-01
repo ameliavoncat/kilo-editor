@@ -5,18 +5,18 @@ void editorDrawStatusBar(struct abuf *ab) {
   int len = snprintf(
     status,
     sizeof(status), "%.20s - %d lines %s",
-    E.filename ? E.filename : "[No Name]",
-    E.numrows,
-    E.dirty ? "(modified)" : ""
+    Editor.filename ? Editor.filename : "[No Name]",
+    Editor.numrows,
+    Editor.dirty ? "(modified)" : ""
   );
 
   int rlen = snprintf(rstatus, sizeof(rstatus), "%d/%d",
-    E.cy + 1, E.numrows);
+    Editor.char_position_y + 1, Editor.numrows);
 
-  if (len > E.screencols) len = E.screencols;
+  if (len > Editor.screencols) len = Editor.screencols;
   abAppend(ab, status, len);
-  while (len < E.screencols) {
-    if (E.screencols - len == rlen) {
+  while (len < Editor.screencols) {
+    if (Editor.screencols - len == rlen) {
       abAppend(ab, rstatus, rlen);
       break;
     } else {

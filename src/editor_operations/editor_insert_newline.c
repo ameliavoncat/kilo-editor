@@ -1,14 +1,14 @@
 void editorInsertNewline() {
-  if (E.cx == 0) {
-    editorInsertRow(E.cy, "", 0);
+  if (Editor.char_position_x == 0) {
+    editorInsertRow(Editor.char_position_y, "", 0);
   } else {
-    erow *row = &E.row[E.cy];
-    editorInsertRow(E.cy + 1, &row->chars[E.cx], row->size - E.cx);
-    row = &E.row[E.cy];
-    row-> size = E.cx;
+    erow *row = &Editor.row[Editor.char_position_y];
+    editorInsertRow(Editor.char_position_y + 1, &row->chars[Editor.char_position_x], row->size - Editor.char_position_x);
+    row = &Editor.row[Editor.char_position_y];
+    row-> size = Editor.char_position_x;
     row-> chars[row->size] = '\0';
     editorUpdateRow(row);
   }
-  E.cy++;
-  E.cx = 0;
+  Editor.char_position_y++;
+  Editor.char_position_x = 0;
 }

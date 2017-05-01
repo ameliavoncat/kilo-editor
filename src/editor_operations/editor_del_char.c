@@ -1,15 +1,15 @@
 void editorDelChar() {
-  if (E.cy == E.numrows) return;
-  if (E.cx == 0 && E.cy == 0) return;
+  if (Editor.char_position_y == Editor.numrows) return;
+  if (Editor.char_position_x == 0 && Editor.char_position_y == 0) return;
 
-  erow *row = &E.row[E.cy];
-  if (E.cx > 0) {
-    editorRowDelChar(row, E.cx - 1);
-    E.cx --;
+  erow *row = &Editor.row[Editor.char_position_y];
+  if (Editor.char_position_x > 0) {
+    editorRowDelChar(row, Editor.char_position_x - 1);
+    Editor.char_position_x --;
   } else {
-    E.cx = E.row[E.cy - 1].size;
-    editorRowAppendString(&E.row[E.cy - 1], row->chars, row->size);
-    editorDelRow(E.cy);
-    E.cy--;
+    Editor.char_position_x = Editor.row[Editor.char_position_y - 1].size;
+    editorRowAppendString(&Editor.row[Editor.char_position_y - 1], row->chars, row->size);
+    editorDelRow(Editor.char_position_y);
+    Editor.char_position_y--;
   }
 }

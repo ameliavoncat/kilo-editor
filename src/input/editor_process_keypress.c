@@ -8,7 +8,7 @@ void editorProcessKeypress() {
       break;
 
     case CTRL_KEY('q'):
-      if (E.dirty && quit_times > 0) {
+      if (Editor.dirty && quit_times > 0) {
           editorSetStatusMessage("WARNING!!! File has unsaved changes. "
             "Press Ctrl-Q %d more times to quit.", quit_times);
           quit_times--;
@@ -23,12 +23,12 @@ void editorProcessKeypress() {
     break;
 
     case HOME_KEY:
-      E.cx = 0;
+      Editor.char_position_x = 0;
       break;
 
     case END_KEY:
-      if (E.cy < E.numrows)
-        E.cx = E.row[E.cy].size;
+      if (Editor.char_position_y < Editor.numrows)
+        Editor.char_position_x = Editor.row[Editor.char_position_y].size;
       break;
 
     case BACKSPACE:
@@ -42,13 +42,13 @@ void editorProcessKeypress() {
     case PAGE_DOWN:
       {
         if(input == PAGE_UP) {
-          E.cy = E.rowoff;
+          Editor.char_position_y = Editor.row_offset;
         } else if (input == PAGE_DOWN) {
-          E.cy = E.rowoff + E.screenrows - 1;
-          if (E.cy > E.numrows) E.cy = E.numrows;
+          Editor.char_position_y = Editor.row_offset + Editor.screenrows - 1;
+          if (Editor.char_position_y > Editor.numrows) Editor.char_position_y = Editor.numrows;
         }
 
-        int times = E.screenrows;
+        int times = Editor.screenrows;
         while (times--)
           editorMoveCursor( input == PAGE_UP ? ARROW_UP : ARROW_DOWN);
       }

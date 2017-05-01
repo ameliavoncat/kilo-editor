@@ -1,7 +1,7 @@
 void editorSave() {
-  if (E.filename == NULL) {
-    E.filename = editorPrompt("Save as: %s (ESC to cancel)");
-    if (E.filename == NULL) {
+  if (Editor.filename == NULL) {
+    Editor.filename = editorPrompt("Save as: %s (ESC to cancel)");
+    if (Editor.filename == NULL) {
       editorSetStatusMessage("Save aborted!");
       return;
     }
@@ -10,13 +10,13 @@ void editorSave() {
   int len;
   char *buf = editorRowsToString(&len);
 
-  int fd = open(E.filename, O_RDWR | O_CREAT, 0644);
+  int fd = open(Editor.filename, O_RDWR | O_CREAT, 0644);
   if (fd != -1) {
     if (ftruncate(fd, len) != -1) {
       if (write(fd, buf, len) == len) {
         close(fd);
         free(buf);
-        E.dirty = 0;
+        Editor.dirty = 0;
         editorSetStatusMessage("%d bytes written to disk.", len);
         return;
       }
