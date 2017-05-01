@@ -1,4 +1,5 @@
 void editorProcessKeypress() {
+  static int quit_times = KILO_QUIT_TIMES;
   int input = editorReadKey();
 
   switch(input) {
@@ -7,9 +8,19 @@ void editorProcessKeypress() {
       break;
 
     case CTRL_KEY('q'):
+      if (E.dirty && quit_times > 0) {
+          editorSetStatusMessage("WARNING!!! File has unsaved changes. "
+            "Press Ctrl-Q %d more times to quit.", quit_times);
+          quit_times--;
+          return;
+      }
       clearScreenAndPositionCursor();
       exit(0);
       break;
+
+    case CTRL_KEY('s'):
+      editorSave();
+    break;
 
     case HOME_KEY:
       E.cx = 0;
@@ -23,7 +34,8 @@ void editorProcessKeypress() {
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:
-      /* TODO */
+      if (input == DEL_KEY) editorMoveCursor(ARROW_RIGHT);
+      editorDelChar();
       break;
 
     case PAGE_UP:
@@ -57,4 +69,6 @@ void editorProcessKeypress() {
       editorInsertChar(input);
       break;
   }
+
+  quit_times = KILO_QUIT_TIMES;
 }

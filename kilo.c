@@ -1,11 +1,11 @@
-/*** index ***/
-
+/*** src file index ***/
 #define _DEFAULT_SOURCE
 #define _BSD_SOURCE
 #define _GNU_SOURCE
 
 #include <ctype.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -17,6 +17,7 @@
 #include <unistd.h>
 
 #include "src/constants.c"
+#include "src/prototypes.c"
 #include "src/data/index.c"
 #include "src/helpers/index.c"
 #include "src/terminal/index.c"
