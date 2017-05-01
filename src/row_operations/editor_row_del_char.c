@@ -3,5 +3,5 @@ void editorRowDelChar(erow *row, int at) {
   memmove(&row->chars[at], &row->chars[at + 1], row->size - at);
   row->size--;
   editorUpdateRow(row);
-  E.dirty++;
+  Editor.dirty++;
 }

@@ -1,16 +1,16 @@
 void initEditor() {
-  E.cx = 0;
-  E.cy = 0;
-  E.rx = 0;
-  E.rowoff = 0;
-  E.coloff = 0;
-  E.numrows = 0;
-  E.row = NULL;
-  E.dirty = 0;
-  E.filename = NULL;
-  E.statusmsg[0] = '\0';
-  E.statusmsg_time = 0;
+  Editor.char_position_x = 0;
+  Editor.char_position_y = 0;
+  Editor.render_position_x = 0;
+  Editor.row_offset = 0;
+  Editor.col_offset = 0;
+  Editor.numrows = 0;
+  Editor.row = NULL;
+  Editor.dirty = 0;
+  Editor.filename = NULL;
+  Editor.statusmsg[0] = '\0';
+  Editor.statusmsg_time = 0;
 
-  if (getWindowSize(&E.screenrows, &E.screencols) == -1) die("getWindowSize");
-  E.screenrows -= 2;
+  if (getWindowSize(&Editor.screenrows, &Editor.screencols) == -1) die("getWindowSize");
+  Editor.screenrows -= 2;
 }

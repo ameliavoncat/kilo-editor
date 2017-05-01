@@ -1,15 +1,15 @@
 void editorDrawRows(struct abuf *ab) {
   int y;
-  for (y = 0; y < E.screenrows; y++) {
-    int filerow = y + E.rowoff;
-    if (filerow >= E.numrows) {
-      if (E.numrows == 0 && y == E.screenrows / 3) {
+  for (y = 0; y < Editor.screenrows; y++) {
+    int filerow = y + Editor.row_offset;
+    if (filerow >= Editor.numrows) {
+      if (Editor.numrows == 0 && y == Editor.screenrows / 3) {
         char welcome[80];
         int welcomelen = snprintf(
           welcome, sizeof(welcome), "Kilo editor -- version %s", KILO_VERSION
         );
-        if(welcomelen > E.screencols) welcomelen = E.screencols;
-        int padding = (E.screencols - welcomelen) / 2;
+        if(welcomelen > Editor.screencols) welcomelen = Editor.screencols;
+        int padding = (Editor.screencols - welcomelen) / 2;
         if (padding) {
           abAppend(ab, "~", 1);
           padding--;
@@ -20,10 +20,10 @@ void editorDrawRows(struct abuf *ab) {
         abAppend(ab, "~", 1);
       }
     } else {
-      int len = E.row[filerow].rsize - E.coloff;
+      int len = Editor.row[filerow].rsize - Editor.col_offset;
       if (len < 0) len = 0;
-      if (len > E.screencols) len = E.screencols;
-      abAppend(ab, &E.row[filerow].render[E.coloff], len);
+      if (len > Editor.screencols) len = Editor.screencols;
+      abAppend(ab, &Editor.row[filerow].render[Editor.col_offset], len);
     }
 
     abAppend(ab, "\x1b[K", 3);

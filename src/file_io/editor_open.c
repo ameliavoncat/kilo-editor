@@ -1,6 +1,6 @@
 void editorOpen(char *filename) {
-  free(E.filename);
-  E.filename = strdup(filename);
+  free(Editor.filename);
+  Editor.filename = strdup(filename);
 
   FILE *fp = fopen(filename, "r");
   if (!fp) die("fopen");
@@ -12,9 +12,9 @@ void editorOpen(char *filename) {
     while(linelen > 0 && (line[linelen - 1] == '\n' ||
                           line[linelen - 1] == '\r'))
       linelen --;
-    editorInsertRow(E.numrows, line, linelen);
+    editorInsertRow(Editor.numrows, line, linelen);
   }
   free(line);
   fclose(fp);
-  E.dirty = 0;
+  Editor.dirty = 0;
 }

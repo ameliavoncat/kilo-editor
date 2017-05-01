@@ -1,38 +1,38 @@
 void editorMoveCursor(int key) {
-  erow *row = (E.cy >= E.numrows) ? NULL : &E.row[E.cy];
+  erow *row = (Editor.char_position_y >= Editor.numrows) ? NULL : &Editor.row[Editor.char_position_y];
 
   switch (key) {
     case ARROW_LEFT:
-      if (E.cx != 0) {
-        E.cx--;
-      } else if (E.cy > 0) {
-        E.cy --;
-        E.cx = E.row[E.cy].size;
+      if (Editor.char_position_x != 0) {
+        Editor.char_position_x--;
+      } else if (Editor.char_position_y > 0) {
+        Editor.char_position_y --;
+        Editor.char_position_x = Editor.row[Editor.char_position_y].size;
       }
       break;
     case ARROW_RIGHT:
-      if (row && E.cx < row->size) {
-        E.cx++;
-      } else if (row && E.cx == row->size) {
-        E.cy++;
-        E.cx = 0;
+      if (row && Editor.char_position_x < row->size) {
+        Editor.char_position_x++;
+      } else if (row && Editor.char_position_x == row->size) {
+        Editor.char_position_y++;
+        Editor.char_position_x = 0;
       }
       break;
     case ARROW_UP:
-      if (E.cy != 0) {
-        E.cy--;
+      if (Editor.char_position_y != 0) {
+        Editor.char_position_y--;
       }
       break;
     case ARROW_DOWN:
-      if (E.cy < E.numrows) {
-        E.cy++;
+      if (Editor.char_position_y < Editor.numrows) {
+        Editor.char_position_y++;
       }
       break;
   }
 
-  row = (E.cy >= E.numrows) ? NULL : &E.row[E.cy];
+  row = (Editor.char_position_y >= Editor.numrows) ? NULL : &Editor.row[Editor.char_position_y];
   int rowlen = row ? row->size : 0;
-  if (E.cx > rowlen) {
-    E.cx = rowlen;
+  if (Editor.char_position_x > rowlen) {
+    Editor.char_position_x = rowlen;
   }
 }

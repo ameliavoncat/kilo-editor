@@ -1,8 +1,8 @@
 struct editorConfig {
-  int cx, cy;
-  int rx;
-  int rowoff;
-  int coloff;
+  int char_position_x, char_position_y;
+  int render_position_x;
+  int row_offset;
+  int col_offset;
   int screenrows;
   int screencols;
   int numrows;

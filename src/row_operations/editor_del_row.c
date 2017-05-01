@@ -1,7 +1,7 @@
 void editorDelRow(int index) {
-  if (index < 0 || index >= E.numrows) return;
-  editorFreeRow(&E.row[index]);
-  memmove(&E.row[index], &E.row[index + 1], sizeof(erow) * (E.numrows - index - 1));
-  E.numrows --;
-  E.dirty ++;
+  if (index < 0 || index >= Editor.numrows) return;
+  editorFreeRow(&Editor.row[index]);
+  memmove(&Editor.row[index], &Editor.row[index + 1], sizeof(erow) * (Editor.numrows - index - 1));
+  Editor.numrows --;
+  Editor.dirty ++;
 }

@@ -1,7 +1,7 @@
 void editorInsertChar(int character) {
-  if (E.cy == E.numrows) {
-    editorInsertRow(E.numrows, "", 0);
+  if (Editor.char_position_y == Editor.numrows) {
+    editorInsertRow(Editor.numrows, "", 0);
   }
-  editorRowInsertChar(&E.row[E.cy], E.cx, character);
-  E.cx++;
+  editorRowInsertChar(&Editor.row[Editor.char_position_y], Editor.char_position_x, character);
+  Editor.char_position_x++;
 }
