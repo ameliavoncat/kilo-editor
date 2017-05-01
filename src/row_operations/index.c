@@ -1,5 +1,8 @@
 #include "editor_row_cx_to_rx.c"
 #include "editor_update_row.c"
 #include "editor_append_row.c"
+#include "editor_free_row.c"
+#include "editor_del_row.c"
 #include "editor_row_insert_char.c"
+#include "editor_row_append_string.c"
 #include "editor_row_del_char.c"
