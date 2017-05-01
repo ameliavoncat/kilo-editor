@@ -1,10 +1,3 @@
-typedef struct erow {
-  int size;
-  int rsize;
-  char *chars;
-  char *render;
-} erow;
-
 struct editorConfig {
   int cx, cy;
   int rx;
@@ -19,5 +12,3 @@ struct editorConfig {
   time_t statusmsg_time;
   struct termios orig_termios;
 };
-
-struct editorConfig E;
