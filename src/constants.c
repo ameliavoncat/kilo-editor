@@ -2,6 +2,7 @@
 #define KILO_TAB_STOP 8
 //ctrl key strips the 6th and 7th bits from the key pressed
 #define CTRL_KEY(key) ((key) & 0x1f)
+#define ABUF_INIT {NULL, 0}
 
 enum editorKey {
   BACKSPACE = 127,

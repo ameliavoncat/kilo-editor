@@ -4,13 +4,3 @@ void clearScreen() {
   //4 bytes: [escape], [, 2, J
   write(STDOUT_FILENO, "\x1b[2J", 4);
 }
-
-void repositionCursor() {
-  //3 bytes: [escape], [, H
-  write(STDOUT_FILENO, "\x1b[H", 3);
-}
-
-void clearScreenAndPositionCursor() {
-  clearScreen();
-  repositionCursor();
-}

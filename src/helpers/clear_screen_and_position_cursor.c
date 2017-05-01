@@ -1,0 +1,4 @@
+void clearScreenAndPositionCursor() {
+  clearScreen();
+  repositionCursor();
+}
