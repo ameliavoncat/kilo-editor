@@ -4,7 +4,8 @@ void editorFind() {
   int saved_coloff = Editor.col_offset;
   int saved_rowoff = Editor.row_offset;
 
-  char *query = editorPrompt("Search: %s (ESC to cancel)", editorFindCallback);
+  char *query = editorPrompt("Search: %s (Use ESC/Arrows/Enter)",
+                              editorFindCallback);
 
   if (query) {
     free(query);
