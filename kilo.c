@@ -21,6 +21,7 @@
 #include "src/data/index.c"
 #include "src/helpers/index.c"
 #include "src/terminal/index.c"
+#include "src/syntax_highlighting/index.c"
 #include "src/row_operations/index.c"
 #include "src/editor_operations/index.c"
 #include "src/file_io/index.c"
