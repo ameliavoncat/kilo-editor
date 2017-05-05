@@ -31,6 +31,10 @@ void editorProcessKeypress() {
         Editor.char_position_x = Editor.row[Editor.char_position_y].size;
       break;
 
+    case CTRL_KEY('f'):
+      editorFind();
+      break;
+
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:

@@ -24,6 +24,7 @@
 #include "src/row_operations/index.c"
 #include "src/editor_operations/index.c"
 #include "src/file_io/index.c"
+#include "src/search/index.c"
 #include "src/append_buffer/index.c"
 #include "src/output/index.c"
 #include "src/input/index.c"

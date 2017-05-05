@@ -1,6 +1,6 @@
 void editorSave() {
   if (Editor.filename == NULL) {
-    Editor.filename = editorPrompt("Save as: %s (ESC to cancel)");
+    Editor.filename = editorPrompt("Save as: %s (ESC to cancel)", NULL);
     if (Editor.filename == NULL) {
       editorSetStatusMessage("Save aborted!");
       return;

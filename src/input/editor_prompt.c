@@ -1,4 +1,4 @@
-char *editorPrompt(char *prompt) {
+char *editorPrompt(char *prompt, void (*callback)(char *, int)) {
   size_t bufsize = 128;
   char *buf = malloc(bufsize);
 
@@ -14,11 +14,13 @@ char *editorPrompt(char *prompt) {
       if (buflen !=0) buf[--buflen] = '\0';
     } else if (input == '\x1b') {
       editorSetStatusMessage("");
+      if (callback) callback(buf, input);
       free(buf);
       return NULL;
     } else if (input == '\r') {
       if (buflen != 0) {
         editorSetStatusMessage("");
+        if (callback) callback(buf, input);
         return buf;
       }
     } else if (!iscntrl(input) && input < 128) {
@@ -29,5 +31,7 @@ char *editorPrompt(char *prompt) {
       buf[buflen++] = input;
       buf[buflen] = '\0';
     }
+
+    if (callback) callback(buf, input);
   }
 }
