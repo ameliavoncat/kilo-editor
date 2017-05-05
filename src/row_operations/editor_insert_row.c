@@ -11,6 +11,7 @@ void editorInsertRow(int y_index, char *s, size_t len) {
 
   Editor.row[y_index].rsize = 0;
   Editor.row[y_index].render = NULL;
+  Editor.row[y_index].hl = NULL;
   editorUpdateRow(&Editor.row[y_index]);
 
   Editor.numrows++;

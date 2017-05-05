@@ -23,7 +23,29 @@ void editorDrawRows(struct abuf *ab) {
       int len = Editor.row[filerow].rsize - Editor.col_offset;
       if (len < 0) len = 0;
       if (len > Editor.screencols) len = Editor.screencols;
-      abAppend(ab, &Editor.row[filerow].render[Editor.col_offset], len);
+      char *c = &Editor.row[filerow].render[Editor.col_offset];
+      unsigned char *hl = &Editor.row[filerow].hl[Editor.col_offset];
+      int current_color = -1;
+      int j;
+      for (j = 0; j < len; j++) {
+        if(hl[j] == HL_NORMAL) {
+          if (current_color != -1) {
+            abAppend(ab, "\x1b[39m", 5);
+            current_color = -1;
+          }
+          abAppend(ab, &c[j], 1);
+        } else {
+          int color = editorSyntaxToColor(hl[j]);
+          if (color != current_color) {
+            current_color = color;
+            char buf[16];
+            int clen = snprintf(buf, sizeof(buf), "\x1b[%dm", color);
+            abAppend(ab, buf, clen);
+          }
+          abAppend(ab, &c[j], 1);
+        }
+      }
+      abAppend(ab, "\x1b[39m", 5);
     }
 
     abAppend(ab, "\x1b[K", 3);
