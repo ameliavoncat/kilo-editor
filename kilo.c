@@ -19,6 +19,7 @@
 #include "src/constants.c"
 #include "src/prototypes.c"
 #include "src/data/index.c"
+#include "src/filetypes/index.c"
 #include "src/helpers/index.c"
 #include "src/terminal/index.c"
 #include "src/syntax_highlighting/index.c"

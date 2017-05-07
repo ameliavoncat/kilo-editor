@@ -10,6 +10,7 @@ void initEditor() {
   Editor.filename = NULL;
   Editor.statusmsg[0] = '\0';
   Editor.statusmsg_time = 0;
+  Editor.syntax = NULL;
 
   if (getWindowSize(&Editor.screenrows, &Editor.screencols) == -1) die("getWindowSize");
   Editor.screenrows -= 2;

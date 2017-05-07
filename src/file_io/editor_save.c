@@ -5,6 +5,7 @@ void editorSave() {
       editorSetStatusMessage("Save aborted!");
       return;
     }
+    editorSelectSyntaxHighlight();
   }
 
   int len;
