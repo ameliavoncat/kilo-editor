@@ -2,6 +2,8 @@ void editorOpen(char *filename) {
   free(Editor.filename);
   Editor.filename = strdup(filename);
 
+  editorSelectSyntaxHighlight();
+
   FILE *fp = fopen(filename, "r");
   if (!fp) die("fopen");
 

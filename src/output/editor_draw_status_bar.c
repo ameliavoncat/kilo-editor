@@ -10,8 +10,8 @@ void editorDrawStatusBar(struct abuf *ab) {
     Editor.dirty ? "(modified)" : ""
   );
 
-  int rlen = snprintf(rstatus, sizeof(rstatus), "%d/%d",
-    Editor.char_position_y + 1, Editor.numrows);
+  int rlen = snprintf(rstatus, sizeof(rstatus), "%s | %d/%d",
+    Editor.syntax ? Editor.syntax->filetype : "no ft", Editor.char_position_y + 1, Editor.numrows);
 
   if (len > Editor.screencols) len = Editor.screencols;
   abAppend(ab, status, len);
