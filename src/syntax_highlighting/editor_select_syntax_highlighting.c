@@ -12,6 +12,11 @@ void editorSelectSyntaxHighlight() {
       if ((is_ext && ext && !strcmp(ext, s->filematch[i])) ||
           (!is_ext && strstr(Editor.filename, s->filematch[i]))) {
         Editor.syntax = s;
+
+        int filerow;
+        for (filerow = 0; filerow < Editor.numrows; filerow++) {
+          editorUpdateSyntax(&Editor.row[filerow]);
+        }
         return;
       }
       i++;
