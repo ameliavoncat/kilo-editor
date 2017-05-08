@@ -21,6 +21,7 @@ enum editorKey {
 
 enum editorHighlight {
   HL_NORMAL = 0,
+  HL_COMMENT,
   HL_STRING,
   HL_NUMBER,
   HL_MATCH
